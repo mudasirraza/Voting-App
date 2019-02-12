@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
+	<display-name>Voting System</display-name>
+
+	<!-- Servlets -->
+	<servlet>
+		<servlet-name>ElectionsServlet</servlet-name>
+		<servlet-class>com.example.appengine.java8.ElectionsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ElectionsServlet</servlet-name>
+		<url-pattern>/admin/election</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>VotingServlet</servlet-name>
+		<servlet-class>com.example.appengine.java8.VotingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>VotingServlet</servlet-name>
+		<url-pattern>/voting</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CandidatesServlet</servlet-name>
+		<servlet-class>com.example.appengine.java8.CandidatesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CandidatesServlet</servlet-name>
+		<url-pattern>/admin/candidates</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>StudentsServlet</servlet-name>
+		<servlet-class>com.example.appengine.java8.StudentsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StudentsServlet</servlet-name>
+		<url-pattern>/admin/students</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ReportServlet</servlet-name>
+		<servlet-class>com.example.appengine.java8.ReportServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReportServlet</servlet-name>
+		<url-pattern>/report</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>NotifyStudentsServlet</servlet-name>
+		<servlet-class>com.example.appengine.java8.NotifyStudentsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NotifyStudentsServlet</servlet-name>
+		<url-pattern>/admin/notify_students</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ReminderServlet</servlet-name>
+		<servlet-class>com.example.appengine.java8.ReminderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReminderServlet</servlet-name>
+		<url-pattern>/reminder</url-pattern>
+	</servlet-mapping>
+	
+	<!-- JSPs -->
+	<servlet>
+		<servlet-name>Main</servlet-name>
+		<jsp-file>/jsps/index.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Main</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>NewCandidateServlet</servlet-name>
+		<jsp-file>/jsps/new_candidate.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NewCandidateServlet</servlet-name>
+		<url-pattern>/admin/candidates/new</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>NewStudentServlet</servlet-name>
+		<jsp-file>/jsps/new_student.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NewStudentServlet</servlet-name>
+		<url-pattern>/admin/students/new</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CastVoteServlet</servlet-name>
+		<jsp-file>/jsps/cast_vote.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CastVoteServlet</servlet-name>
+		<url-pattern>/voting/cast</url-pattern>
+	</servlet-mapping>
+	
+	<!--  Security -->
+	<security-constraint>
+        <web-resource-collection>
+            <web-resource-name>admin</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+</web-app>
